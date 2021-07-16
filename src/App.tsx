@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import Header from './components/Header/Header';
+import BasicQuery from './pages/BasicQuery';
+import InfiniteQuery from './pages/InfiniteQuery';
+import PaginatedQuery from './pages/PaginatedQuery';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Header />
+			<main className="container mx-auto p-4">
+				<Switch>
+					<Route path="/" exact>
+						<BasicQuery />
+					</Route>
+					<Route path="/paginated">
+						<PaginatedQuery />
+					</Route>
+					<Route path="/" exact>
+						<InfiniteQuery />
+					</Route>
+				</Switch>
+			</main>
+		</>
+	);
 }
 
 export default App;
