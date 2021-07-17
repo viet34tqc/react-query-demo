@@ -1,0 +1,10 @@
+.table-users {
+	--c-border: rgba(21, 94, 117, var(--tw-border-opacity));
+	thead {
+		border: 1px solid var(--c-border);
+	}
+	td {
+		border: 1px solid var(--c-border);
+		padding: 1px 16px;
+	}
+}
