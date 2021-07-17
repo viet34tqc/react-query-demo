@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import BasicQuery from './pages/BasicQuery';
+import CreateUser from './pages/CreateUser';
 import InfiniteQuery from './pages/InfiniteQuery';
 import PaginatedQuery from './pages/PaginatedQuery';
 
@@ -19,8 +20,11 @@ function App() {
 						<Route path="/paginated">
 							<PaginatedQuery />
 						</Route>
-						<Route path="/" exact>
+						<Route path="/infinite">
 							<InfiniteQuery />
+						</Route>
+						<Route path="/user/create">
+							<CreateUser />
 						</Route>
 					</Switch>
 				</QueryClientProvider>

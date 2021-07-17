@@ -32,19 +32,22 @@ const UsersTable = ({ users }: UsersTableProps) => {
 		</tr>
 	));
 	return (
-		<table className="table-fixed table-users" style={{ width: '100%' }}>
-			<thead className="text-white bg-pink-900">
-				<tr className="py-4">
-					<th className="w-1/12">Id</th>
-					<th className="w-3/12">First Name</th>
-					<th className="w-3/12">Last Name</th>
-					<th className="w-3/12">Email</th>
-					<th className="w-1/12">Gender</th>
-					<th className="w-1/12">Action</th>
-				</tr>
-			</thead>
-			<tbody>{rows}</tbody>
-		</table>
+		<>
+			<Link to="/user/create">Create User</Link>
+			<table className="table-fixed table-users" style={{ width: '100%' }}>
+				<thead className="text-white bg-pink-900">
+					<tr className="py-4">
+						<th className="w-1/12">Id</th>
+						<th className="w-3/12">First Name</th>
+						<th className="w-3/12">Last Name</th>
+						<th className="w-3/12">Email</th>
+						<th className="w-1/12">Gender</th>
+						<th className="w-1/12">Action</th>
+					</tr>
+				</thead>
+				<tbody>{rows}</tbody>
+			</table>
+		</>
 	);
 };
 
