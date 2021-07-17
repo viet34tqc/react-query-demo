@@ -33,7 +33,9 @@ const UsersTable = ({ users }: UsersTableProps) => {
 	));
 	return (
 		<>
-			<Link to="/user/create">Create User</Link>
+			<Link to="/user/create" className="btn inline-block mb-4">
+				Create User
+			</Link>
 			<table className="table-fixed table-users" style={{ width: '100%' }}>
 				<thead className="text-white bg-pink-900">
 					<tr className="py-4">

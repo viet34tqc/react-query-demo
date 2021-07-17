@@ -1,18 +1,23 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
+import './UserForm.styles.scss';
 
 enum GenderEnum {
-	female = 'female',
-	male = 'male',
+	female = 'Female',
+	male = 'Male',
 }
 
-interface FormData {
+export interface FormData {
 	first_name: string;
 	last_name: string;
 	email: string;
 	gender: GenderEnum;
+}
+
+interface UserFormProps {
+	onSubmit: (data: any) => void;
 }
 
 const schema = yup.object().shape({
@@ -22,7 +27,7 @@ const schema = yup.object().shape({
 	gender: yup.string().required().oneOf(Object.values(GenderEnum)),
 });
 
-const UserForm = () => {
+const UserForm = ({ onSubmit }: UserFormProps) => {
 	const history = useHistory();
 	const {
 		register,
@@ -32,7 +37,6 @@ const UserForm = () => {
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<div className="form-control">
@@ -69,9 +73,15 @@ const UserForm = () => {
 
 				{errors.gender && <div className="errors">Gender is required</div>}
 			</div>
-			<div className="form-control">
-				<button type="submit">Submit</button>
-				<button type="button" onClick={() => history.goBack()}>
+			<div className="form-control flex justify-between">
+				<button className="btn" type="submit">
+					Submit
+				</button>
+				<button
+					className="btn--secondary"
+					type="button"
+					onClick={() => history.goBack()}
+				>
 					Back
 				</button>
 			</div>
