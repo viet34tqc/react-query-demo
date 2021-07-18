@@ -2,12 +2,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import * as yup from 'yup';
+import { GenderEnum } from '../../types/user';
 import './UserForm.styles.scss';
-
-enum GenderEnum {
-	female = 'Female',
-	male = 'Male',
-}
 
 export interface FormData {
 	first_name: string;
@@ -17,6 +13,8 @@ export interface FormData {
 }
 
 interface UserFormProps {
+	user?: any;
+	submitText?: string;
 	onSubmit: (data: any) => void;
 }
 
@@ -27,18 +25,25 @@ const schema = yup.object().shape({
 	gender: yup.string().required().oneOf(Object.values(GenderEnum)),
 });
 
-const UserForm = ({ onSubmit }: UserFormProps) => {
+const UserForm = ({ onSubmit, user, submitText }: UserFormProps) => {
 	const history = useHistory();
 	const {
 		register,
 		formState: { errors },
 		handleSubmit,
 	} = useForm<FormData>({
+		defaultValues: user || {},
 		resolver: yupResolver(schema),
 	});
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
+			{user && (
+				<div className="form-control">
+					<label htmlFor="first_name">ID</label>
+					<input type="text" id="id" value={user.id} disabled />
+				</div>
+			)}
 			<div className="form-control">
 				<label htmlFor="first_name">First Name</label>
 				<input type="text" id="first_name" {...register('first_name')} />
@@ -75,7 +80,7 @@ const UserForm = ({ onSubmit }: UserFormProps) => {
 			</div>
 			<div className="form-control flex justify-between">
 				<button className="btn" type="submit">
-					Submit
+					{submitText}
 				</button>
 				<button
 					className="btn--secondary"

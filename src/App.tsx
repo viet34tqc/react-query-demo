@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import BasicQuery from './pages/BasicQuery';
 import CreateUser from './pages/CreateUser';
+import EditUser from './pages/EditUser';
 import InfiniteQuery from './pages/InfiniteQuery';
 import PaginatedQuery from './pages/PaginatedQuery';
 
@@ -25,6 +26,9 @@ function App() {
 						</Route>
 						<Route path="/user/create">
 							<CreateUser />
+						</Route>
+						<Route path="/users/edit/:id">
+							<EditUser />
 						</Route>
 					</Switch>
 				</QueryClientProvider>

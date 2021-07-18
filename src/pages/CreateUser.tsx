@@ -15,7 +15,7 @@ const CreateUser = () => {
 			<h2>New User</h2>
 			{error instanceof Error && <div>{error.message}</div>}
 			{isLoading && <div>Loading...</div>}
-			<UserForm onSubmit={onSubmit} />
+			<UserForm onSubmit={onSubmit} submitText="Create" />
 		</div>
 	);
 };
