@@ -1,62 +1,6 @@
 {
   "users": [
     {
-      "first_name": "12",
-      "last_name": "ĐÔNG",
-      "email": "viet34tqc@test.com",
-      "gender": "Male",
-      "id": 1
-    },
-    {
-      "first_name": "Fonzie",
-      "last_name": "Coggen",
-      "email": "fcoggen1@weather.com123",
-      "gender": "Female",
-      "id": 2
-    },
-    {
-      "id": 3,
-      "first_name": "Shell",
-      "last_name": "Kos",
-      "email": "skos2@prweb.com",
-      "gender": "Female"
-    },
-    {
-      "id": 4,
-      "first_name": "Matthiew",
-      "last_name": "Rasell",
-      "email": "mrasell3@oaic.gov.au",
-      "gender": "Female"
-    },
-    {
-      "id": 5,
-      "first_name": "Phillipe",
-      "last_name": "Sedgwick",
-      "email": "psedgwick4@sciencedirect.com",
-      "gender": "Female"
-    },
-    {
-      "id": 6,
-      "first_name": "Lammond",
-      "last_name": "Urion",
-      "email": "lurion5@statcounter.com",
-      "gender": "Male"
-    },
-    {
-      "id": 7,
-      "first_name": "Jeanine",
-      "last_name": "Wicks",
-      "email": "jwicks6@opera.com",
-      "gender": "Female"
-    },
-    {
-      "id": 8,
-      "first_name": "Jemimah",
-      "last_name": "Leisk",
-      "email": "jleisk7@t.co",
-      "gender": "Female"
-    },
-    {
       "id": 9,
       "first_name": "Rania",
       "last_name": "Ibeson",

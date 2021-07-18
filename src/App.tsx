@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import BasicQuery from './pages/BasicQuery';
@@ -31,6 +32,7 @@ function App() {
 							<EditUser />
 						</Route>
 					</Switch>
+					<ReactQueryDevtools initialIsOpen={false} />
 				</QueryClientProvider>
 			</main>
 		</>

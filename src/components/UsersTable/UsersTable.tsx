@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useDeleteUser from '../../hooks/useDeleteUser';
 import { Users } from '../../types/user';
+import DeleteModal from '../DeleteModal/DeleteModal';
 import { DeleteIcon } from '../icons/DeleteIcon';
 import EditIcon from '../icons/EditIcon';
 import './UsersTable.styles.scss';
@@ -8,6 +11,26 @@ interface UsersTableProps {
 }
 
 const UsersTable = ({ users }: UsersTableProps) => {
+	const [deleteId, setDeleteId] = useState('');
+	const [showModal, setShowModal] = useState(false);
+	const { mutate } = useDeleteUser();
+	function showDeleteModal(userId: string) {
+		setDeleteId(userId);
+		setShowModal(true);
+	}
+
+	function hideDeleteModal() {
+		setShowModal(false);
+	}
+
+	function onDelete(id: any) {
+		mutate(id, {
+			onSuccess: () => {
+				hideDeleteModal();
+			},
+		});
+	}
+
 	const rows = users?.map((user, index) => (
 		<tr key={user.id} className="bg-white hover:bg-green-100">
 			<td>{user.id}</td>
@@ -15,24 +38,30 @@ const UsersTable = ({ users }: UsersTableProps) => {
 			<td>{user.last_name}</td>
 			<td>{user.email}</td>
 			<td>{user.gender}</td>
-			<td>
+			<td className="flex">
 				<Link
 					className="inline-block p-2 text-lime-800 hover:text-lime-500"
 					to={`/users/edit/${user.id}`}
 				>
 					<EditIcon />
 				</Link>
-				<Link
+				<button
 					className="inline-block p-2 text-lime-800 hover:text-lime-500"
-					to={`/users/edit/${user.id}`}
+					onClick={() => showDeleteModal(user.id)}
 				>
 					<DeleteIcon />
-				</Link>
+				</button>
 			</td>
 		</tr>
 	));
 	return (
 		<>
+			<DeleteModal
+				id={deleteId}
+				showModal={showModal}
+				deleteAction={onDelete}
+				cancelAction={hideDeleteModal}
+			/>
 			<Link to="/user/create" className="btn inline-block mb-4">
 				Create User
 			</Link>
