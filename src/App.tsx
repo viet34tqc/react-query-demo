@@ -5,7 +5,6 @@ import Header from './components/Header/Header';
 import BasicQuery from './pages/BasicQuery';
 import CreateUser from './pages/CreateUser';
 import EditUser from './pages/EditUser';
-import InfiniteQuery from './pages/InfiniteQuery';
 import PaginatedQuery from './pages/PaginatedQuery';
 
 function App() {
@@ -22,13 +21,10 @@ function App() {
 						<Route path="/paginated">
 							<PaginatedQuery />
 						</Route>
-						<Route path="/infinite">
-							<InfiniteQuery />
-						</Route>
 						<Route path="/user/create">
 							<CreateUser />
 						</Route>
-						<Route path="/users/edit/:id">
+						<Route path="/users/edit/	:id">
 							<EditUser />
 						</Route>
 					</Switch>

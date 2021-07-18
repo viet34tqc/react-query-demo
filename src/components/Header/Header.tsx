@@ -11,7 +11,6 @@ const Header = () => {
 					Basic
 				</NavLink>
 				<NavLink to="/paginated">Paginated</NavLink>
-				<NavLink to="/infinite">Infinite</NavLink>
 			</nav>
 		</header>
 	);
