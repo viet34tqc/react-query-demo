@@ -1,10 +1,10 @@
-import axios from 'axios';
 import { useQuery } from 'react-query';
+import { axiosInstance } from '../config/axios';
 import { User } from '../types/user';
 
 function fetchUser(userId: string): Promise<User> {
-	return axios
-		.get(`http://localhost:3005/users/${userId}`)
+	return axiosInstance
+		.get(`users/${userId}`)
 		.then((res) => res.data)
 		.catch((error) => error.message);
 }

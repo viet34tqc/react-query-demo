@@ -1,12 +1,14 @@
-import axios from 'axios';
 import { useMutation, useQueryClient } from 'react-query';
+import { axiosInstance } from '../config/axios';
 
 const useEditUser = (userId: string) => {
 	const queryClient = useQueryClient();
 	return useMutation(
-		(updatedUser) =>
-			axios.put(`http://localhost:3005/users/${userId}`, updatedUser),
+		(updatedUser) => axiosInstance.put(`users/${userId}`, updatedUser),
 		{
+			onError: (error: Error) => {
+				throw new Error(error.message);
+			},
 			onSettled: () => {
 				queryClient.invalidateQueries('users');
 			},

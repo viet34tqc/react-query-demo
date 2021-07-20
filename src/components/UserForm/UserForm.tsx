@@ -16,6 +16,7 @@ interface UserFormProps {
 	user?: any;
 	submitText?: string;
 	onSubmit: (data: any) => void;
+	isLoading?: boolean;
 }
 
 const schema = yup.object().shape({
@@ -25,7 +26,7 @@ const schema = yup.object().shape({
 	gender: yup.string().required().oneOf(Object.values(GenderEnum)),
 });
 
-const UserForm = ({ onSubmit, user, submitText }: UserFormProps) => {
+const UserForm = ({ onSubmit, user, submitText, isLoading }: UserFormProps) => {
 	const history = useHistory();
 	const {
 		register,
@@ -80,7 +81,7 @@ const UserForm = ({ onSubmit, user, submitText }: UserFormProps) => {
 			</div>
 			<div className="form-control flex justify-between">
 				<button className="btn" type="submit">
-					{submitText}
+					{isLoading ? 'Loading...' : submitText}
 				</button>
 				<button
 					className="btn--secondary"

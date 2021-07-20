@@ -24,7 +24,7 @@ function App() {
 						<Route path="/user/create">
 							<CreateUser />
 						</Route>
-						<Route path="/users/edit/	:id">
+						<Route path="/users/edit/:id">
 							<EditUser />
 						</Route>
 					</Switch>
