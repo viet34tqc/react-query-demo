@@ -10,17 +10,3 @@ export const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(async (config) => {
 	return config;
 });
-
-axiosInstance.interceptors.response.use(
-	(response) => {
-		if (response && response.data) {
-			return response.data;
-		}
-
-		return response;
-	},
-	(error) => {
-		// Handle errors
-		throw error;
-	}
-);
