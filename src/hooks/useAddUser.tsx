@@ -1,10 +1,11 @@
 import { useMutation, useQueryClient } from 'react-query';
-import { axiosInstance } from '../config/axios';
+import userApi from '../config/userApi';
+import { User } from '../types/user';
 
 export default function useAddUser() {
 	const queryClient = useQueryClient();
 	return useMutation(
-		(data) => axiosInstance.post('users', data).then((res) => res.data),
+		(data: User) => userApi.addUser(data).then((res) => res.data),
 		{
 			onSettled: () => {
 				// Refetch the user

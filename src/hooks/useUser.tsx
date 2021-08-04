@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
-import { axiosInstance } from '../config/axios';
+import userApi from '../config/userApi';
 import { User } from '../types/user';
 
 function fetchUser(userId: string): Promise<User> {
-	return axiosInstance
-		.get(`users/${userId}`)
+	return userApi
+		.getUser(userId)
 		.then((res) => res.data)
 		.catch((error) => error.message);
 }

@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from 'react-query';
-import { axiosInstance } from '../config/axios';
+import userApi from '../config/userApi';
 
 const useDeleteUser = () => {
 	const queryClient = useQueryClient();
-	return useMutation((id) => axiosInstance.delete(`users/${id}`), {
+	return useMutation((id: string) => userApi.deleteUser(id), {
 		onSuccess: () => {
 			queryClient.invalidateQueries();
 		},
